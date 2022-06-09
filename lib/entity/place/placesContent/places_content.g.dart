@@ -8,7 +8,7 @@ part of 'places_content.dart';
 
 PlacesContent _$PlacesContentFromJson(Map<String, dynamic> json) =>
     PlacesContent(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       title: json['title'] as String?,
       content: json['content'] as String?,
       type: json['type'] as String?,

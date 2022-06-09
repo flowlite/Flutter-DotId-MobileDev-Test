@@ -10,19 +10,28 @@ abstract class BasePlacesRepository {
 }
 
 class PlacesRepository implements BasePlacesRepository {
-
   @override
   Future fetchPlaces() {
-    // Simulate network delay
-    return http.get(Uri.parse('https://dot-mobile-test.web.app/place.json')).then(
-      (value) {
-        var response = jsonDecode(value.toString());
-        if (response is PlacesResponseCollection){
+    return http
+        .get(Uri.parse('https://dot-mobile-test.web.app/place.json'))
+        .then((value) {
+      try {
+        var json = jsonDecode(value.body);
+        print(":: RESULT : ${value.body} ::");
+
+        var response = PlacesResponseCollection.fromJson(json);
+        //  todo: (NEXT) JANGAN LUPA DI HAPUS
+        print(":: TYPE : ${response.toString()} ::");
+        if (response is PlacesResponseCollection) {
           return response;
-        }
-        else {
+        } else {
+          print(":: ERROR response type ::");
           return null;
         }
+      } catch (err) {
+        print("ERROR: $err");
+        return null;
+      }
     });
   }
 }

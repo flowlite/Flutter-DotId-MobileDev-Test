@@ -11,7 +11,7 @@ PlacesResponseData _$PlacesResponseDataFromJson(Map<String, dynamic> json) =>
       header: json['header'] == null
           ? null
           : PlacesHeader.fromJson(json['header'] as Map<String, dynamic>),
-      content: (json['content'] as List<dynamic>?)
+      contents: (json['content'] as List<dynamic>?)
           ?.map((e) => PlacesContent.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -19,5 +19,5 @@ PlacesResponseData _$PlacesResponseDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$PlacesResponseDataToJson(PlacesResponseData instance) =>
     <String, dynamic>{
       'header': instance.header?.toJson(),
-      'content': instance.content?.map((e) => e.toJson()).toList(),
+      'content': instance.contents?.map((e) => e.toJson()).toList(),
     };

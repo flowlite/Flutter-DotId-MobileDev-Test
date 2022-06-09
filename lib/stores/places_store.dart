@@ -17,7 +17,7 @@ abstract class _PlacesStore with Store {
   _PlacesStore(this._placesRepository);
 
   @observable
-  ObservableFuture _placeFuture;
+  ObservableFuture? _placeFuture;
 
   @observable
   List<PlacesContent>? placesContents;
@@ -29,12 +29,12 @@ abstract class _PlacesStore with Store {
   StoreState get state {
     // If the user has not yet searched for a placesContent forecast or there has been an error
     if (_placeFuture == null ||
-        _placeFuture.status == FutureStatus.rejected) {
+        _placeFuture?.status == FutureStatus.rejected) {
       return StoreState.initial;
     }
     // Pending Future means "loading"
     // Fulfilled Future means "loaded"
-    return _placeFuture.status == FutureStatus.pending
+    return _placeFuture?.status == FutureStatus.pending
         ? StoreState.loading
         : StoreState.loaded;
   }
@@ -50,11 +50,22 @@ abstract class _PlacesStore with Store {
           ObservableFuture(_placesRepository.fetchPlaces());
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
 
-      var response = await _placeFuture.result;
+      //  todo: (NEXT) JANGAN LUPA DI HAPUS
+      print(":: LOADING ::");
+
+      var response = await _placeFuture;
       if (response is PlacesResponseCollection){
-        placesContents = response.data?.content;
+        //  todo: (NEXT) JANGAN LUPA DI HAPUS
+        print(":: LOADED ::");
+
+        placesContents = response.data?.contents;
+
+        print(":: ~LENGTH: ${placesContents?.length} ::");
       }
     } catch (err){
+      print(":: ERROR ::");
+      print(":: $err ::");
+
       errorMessage = "Couldn't fetch places. Is the device online?";
     }
   }

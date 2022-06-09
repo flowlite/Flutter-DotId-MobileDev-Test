@@ -2,16 +2,16 @@ import 'package:flutter_dotid_mobiledev_test/entity/place/placeHeader/places_hea
 import 'package:flutter_dotid_mobiledev_test/entity/place/placesContent/places_content.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'place_response_data.g.dart';
+part  'places_response_data.g.dart';
 
 @JsonSerializable(explicitToJson: true, nullable: true, ignoreUnannotated: true)
 class PlacesResponseData {
   @JsonKey(name: "header") PlacesHeader? header;
-  @JsonKey(name: "content") List<PlacesContent>? content;
+  @JsonKey(name: "content") List<PlacesContent>? contents;
 
   PlacesResponseData({
     this.header,
-    this.content,
+    this.contents,
   });
 
   /// Connect the generated [_$PlacesResponseDataFromJson] function to the `fromJson`

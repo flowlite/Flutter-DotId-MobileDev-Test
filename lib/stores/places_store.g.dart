@@ -20,13 +20,13 @@ mixin _$PlacesStore on _PlacesStore, Store {
       Atom(name: '_PlacesStore._placeFuture', context: context);
 
   @override
-  ObservableFuture<dynamic> get _placeFuture {
+  ObservableFuture<dynamic>? get _placeFuture {
     _$_placeFutureAtom.reportRead();
     return super._placeFuture;
   }
 
   @override
-  set _placeFuture(ObservableFuture<dynamic> value) {
+  set _placeFuture(ObservableFuture<dynamic>? value) {
     _$_placeFutureAtom.reportWrite(value, super._placeFuture, () {
       super._placeFuture = value;
     });

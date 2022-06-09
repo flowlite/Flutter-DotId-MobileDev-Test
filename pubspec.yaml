@@ -35,6 +35,9 @@ dependencies:
   provider:
   mobx:
   flutter_mobx:
+
+  # json
+  json_annotation:
   json_serializable:
   # network
   url_launcher:
@@ -50,6 +53,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # state management
+  build_runner:
+  mobx_codegen:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

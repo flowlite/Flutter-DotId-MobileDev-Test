@@ -13,32 +13,37 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //  todo: (NEXT) JANGAN LUPA DI HAPUS
-        body: Column(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          flexibleSpace: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TabBar(
+                tabs: [
+                  _tabBarWidget("Places"),
+                  _tabBarWidget("Gallery"),
+                  _tabBarWidget("User"),
+                ],
+              )
+            ],
+          ),
+        ),
+        body: TabBarView(
           children: [
-            PageView(
-              children: [
-                PlacesPage(),
+            PlacesPage(),
 
-                //  todo: (NEXT) set TODO messages here
-                Container(color: Colors.red),
-                Container(color: Colors.blue),
-              ],
-            ),
-            TabBar(
-              tabs: [
-                _tabBarWidget("Places"),
-                _tabBarWidget("Gallery"),
-                _tabBarWidget("User"),
-              ],
-            )
+            //  todo: (NEXT) set TODO messages here
+            Container(color: Colors.red),
+            Container(color: Colors.blue),
           ],
         )
+      ),
     );
   }
 
   Widget _tabBarWidget(String title){
-    return Text(title);
+    return Tab(child: Text(title));
   }
 }

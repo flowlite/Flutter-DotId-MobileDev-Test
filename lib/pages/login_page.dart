@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotid_mobiledev_test/constants.dart';
+import 'package:flutter_dotid_mobiledev_test/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -171,10 +172,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _goToHomePage() async {
-    _showMessage("Berhasil!");
-    // await Navigator.pushNamed(
-    //   context,
-    //   Routes.homePage,
-    // );
+    await Navigator.pushNamed(context, Routes.homePage);
   }
 }

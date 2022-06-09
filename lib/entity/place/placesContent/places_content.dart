@@ -4,7 +4,7 @@ part 'places_content.g.dart';
 
 @JsonSerializable(explicitToJson: true, nullable: true, ignoreUnannotated: true)
 class PlacesContent {
-  @JsonKey(name: "id") String? id;
+  @JsonKey(name: "id") int? id;
   @JsonKey(name: "title") String? title;
   @JsonKey(name: "content") String? content;
   @JsonKey(name: "type") String? type;
